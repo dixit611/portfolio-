@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <style>
+        .ॐ{
+            padding:25px;
+        }
+        .navbar {
+            background-color: #343a40; /* Dark background color */
+            padding-left: 0;
+            padding-right: 0;
+        }
+        .navbar-brand {
+            color: #ffffff; /* White color for the brand */
+            font-size: 1.5rem; /* Larger font size */
+            font-weight: bold; /* Bold font weight */
+        }
+        .navbar-nav .nav-link {
+            color: #ffffff; /* White color for navigation links */
+            font-size: 1.1rem; /* Larger font size */
+            margin-right: 10px; /* Right margin between links */
+        }
+        .navbar-nav .nav-link:hover {
+            background-color: red !important; /* Lighter color on hover */
+        }
+    </style>
+</head>
+
+    <header >
+        <nav class="navbar navbar-expand-lg navbar-dark " style="background-color: #351419;">
+            <div class="container-fluid px-0"> <!-- Use container-fluid and px-0 for full-width and no padding -->
+                <div class="ॐ">
+                    <a class="navbar-brand" href="{% url 'index' %}" style="color:red; box-shadow: 0 0 10px #dc3545;">ॐ=mc²</a>
+                </div>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'index' %}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'about' %}">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'projects' %}">Projects</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'certifications' %}">Certifications</a>
+                        </li>
+                        {% if request.user.is_authenticated %}
+                            <button class="btn btn-success"><li class="nav-item">
+                                <a class="nav-link"  href="/logout/">Logout</a>
+                            </li></button>
+                            {% else %}
+                            <button class="btn btn-success"><li class="nav-item">
+                                <a class="nav-link"  href="/login_page/">Login</a>
+                            </li></button>
+                            {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+  <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</html>

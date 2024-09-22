@@ -1,0 +1,177 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+{% load static %}
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<style>
+    #boxshadow {
+        transform: translateY(-5px);
+        box-shadow: 0 0 5px #fa5b0f,
+            0 0 25px #fa5b0f, 0 0 50px #fa5b0f,
+            0 0 100px #fa5b0f, 0 0 200px #fa5b0f;
+        border-radius: 20px;
+        margin: 60px;    
+    }
+
+    .custom-background {
+        background-color: #031633;
+        padding: 20px;
+        color: white;
+    }
+
+    .custom-background .card-body {
+        background-color: rgba(255, 255, 255, 0.1);
+        padding: 15px;
+    }
+
+    .custom-background .card-body p {
+        color: white;
+    }
+
+    .btn:hover {
+        box-shadow: 0 0 5px #dc3545,
+            0 0 25px #dc3545, 0 0 50px #dc3545,
+            0 0 100px #dc3545, 0 0 200px #dc3545;
+    }
+
+    .color-btn {
+        margin: 5px;
+    }
+
+    /* Custom styling for modal */
+    .modal-content {
+        background-color: #031633;
+        color: white;
+    }
+
+    .modal-body p {
+        font-size: 1.5rem; /* Adjust font size as needed */
+        text-align: center;
+    }
+
+    .modal-dialog {
+        margin-top: 10vh; /* Adjust top margin as needed */
+    }
+</style>
+
+<body class="custom-background">
+<div>
+    <div class="container-fluid">
+        <!-- Home Section -->
+        <section class="home show-animate my-5" id="home">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="home-content">
+                        <h1 class="display-3 text-primary font-weight-bolder font-italic">Hi</h1>
+                        <h3 class="hello font-italic text-danger">My name is <span class="name">Aman Dixit</span></h3>
+                        <h3 class="my-profession text-danger">I am a <span id="typing" class="font-italic text-uppercase">web designer</span></h3>
+                        <p class="text-info fw-bolder fs-6">I am a Student of Python Developer and Web-Development</p>
+                        <div class="text-animate">
+                            <h3>Learning Full Stack Development</h3>
+                            <span class="animate" style="--i:3;"></span>
+                        </div>
+                        <p class="card card-body">
+                            As a passionate Computer Science Engineering graduate, I am eager to apply my academic knowledge and innovative thinking to solve real-world problems, continuously learn, and contribute to the advancement of technology.
+                            <span class="animate" style="--i:4;"></span>
+                        </p>
+                        <div class="btn-box">
+                            <a href="{% static 'pdf/certificate/aman-dixit-resume.pdf' %}" class="btn btn-outline-danger" target="_blank">Resume</a>
+                            <button class="btn btn-outline-danger" data-toggle="modal" data-target="#welcomeModal">Please Click Me</button>
+                            <span class="animate" style="--i:5;"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="home-imgHover text-center" id="boxshadow">
+                        <img src="{% static 'images/aman.jpg' %}" class="img-fluid shadow-lg" alt="Aman Dixit" style="border: 2px solid #BC1630; border-radius: 20px;">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hero Section -->
+        <section class="my-5 text-center">
+            <h1>Welcome to My Portfolio</h1>
+            <p class="lead">Discover my work and projects</p>
+            <a href="{% url 'projects' %}" class="btn btn-outline-danger">View Projects</a>
+        </section>
+
+        <!-- About Me Section -->
+        <section class="about mt-5 text-center">
+            <h2>About Me</h2>
+            <p class="lead">Hello! I'm a web developer with a passion for creating beautiful and functional websites. Learn more about me and my journey.</p>
+            <a href="{% url 'about' %}" class="btn btn-outline-danger">Read More</a>
+        </section>
+
+        <!-- Contact Me Section -->
+        <section class="contact mt-5 text-center">
+            <h2>Contact Me</h2>
+            <p class="lead">If you have any questions or would like to work together, feel free to reach out!</p>
+            <a href="{% url 'contact' %}" class="btn btn-outline-danger">Get in Touch</a>
+        </section>
+
+        <!-- Color Switcher Section -->
+        <section class="color-switcher mt-5 text-center">
+            <h2>Switch Background Color</h2>
+            <button class="btn btn-outline-secondary color-btn" onclick="changeBackgroundColor('#2D4C4F')">Greenish Color</button>
+            <button class="btn btn-outline-info color-btn" onclick="changeBackgroundColor('#9FB8D6')">Water Color</button>
+            <button class="btn btn-outline-primary color-btn" onclick="changeBackgroundColor('#071732')">Original</button>
+        </section>
+        <section class="color-switcher mt-5 text-center">
+            <h2>Switch Background Image</h2>
+            <button class="btn btn-outline-danger color-btn" onclick="changeBackgroundImage('{% static 'images/background1.jpg' %}')">Backgorund Image-1</button>
+            <button class="btn btn-outline-primary color-btn" onclick="changeBackgroundImage('{% static 'images/background4.jpg' %}')">Background Image-2</button>
+        </section>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="welcomeModal" tabindex="-1" role="dialog" aria-labelledby="welcomeModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="welcomeModalLabel">Welcome</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p style="font-size: 2rem; text-align: center;">Welcome to ❤️ my portfolio</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    let typed = new Typed('#typing', {
+        strings: [
+            'Frontend Developer',
+            'Engineer',
+            'Full Stack Python Developer',
+            'Web Designer',
+        ],
+        typeSpeed: 100,
+        backSpeed: 50,
+        backDelay: 1000,
+        loop: true
+    });
+});
+
+function changeBackgroundColor(color) {
+    document.body.style.backgroundColor = color;
+}
+function changeBackgroundImage(imageUrl) {
+    document.body.style.backgroundImage = `url(${imageUrl})`;
+    document.body.style.backgroundSize = 'cover';
+    document.body.style.backgroundPosition = 'center center';
+    document.body.style.transition = 'background 0.5s ease-in-out';
+}
+</script>
+{% endblock %}
+</body>

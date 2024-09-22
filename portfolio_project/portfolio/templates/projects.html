@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+
+{% block title %}Projects{% endblock %}
+
+{% block content %}
+{% load static %}
+
+<div class="container mt-5" style="background-color: #031633; min-height: 100vh;">
+    <h1 class="text-center text-light">Projects</h1>
+
+    <!-- Filter Buttons -->
+    <div class="d-flex justify-content-center mb-4 flex-wrap">
+        <button class="btn btn-outline-primary mr-2 mb-2" onclick="showProjects('minor')">Show Minor Projects</button>
+        <button class="btn btn-outline-success mr-2 mb-2" onclick="showProjects('major')">Show Major Projects</button>
+        <button class="btn btn-outline-info mb-2" onclick="showProjects('all')">Show All Projects</button>
+    </div>
+
+    <!-- Projects Section -->
+    <div id="projects-section">
+        <!-- Minor Projects -->
+        <div class="minor-projects">
+            <h3 class="text-center text-light">Minor Projects</h3>
+            <div class="row">
+                {% for project in minor_projects %}
+                <div class="col-12 col-sm-6 col-md-4 mb-4 minor-project">
+                    <div class="card h-100">
+                        <img src="{{ project.image_url }}" class="card-img-top" alt="Project Image" style="max-height: 200px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ project.name }}</h5>
+                            <div class="d-flex justify-content-between">
+                                <a href="{{ project.github_url }}" class="btn btn-outline-dark" target="_blank">GitHub</a>
+                                <button class="btn btn-outline-primary" data-toggle="modal" data-target="#projectModal{{ project.id }}">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="projectModal{{ project.id }}" tabindex="-1" aria-labelledby="projectModalLabel{{ project.id }}" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="projectModalLabel{{ project.id }}">{{ project.name }}</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>{{ project.description }}</p>
+                                <a href="{{ project.live_url }}" class="btn btn-outline-success" target="_blank">Live</a>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Major Projects -->
+        <div class="major-projects">
+            <h3 class="text-center text-light">Major Projects</h3>
+            <div class="row">
+                {% for project in major_projects %}
+                <div class="col-12 col-sm-6 col-md-4 mb-4 major-project">
+                    <div class="card h-100">
+                        <img src="{{ project.image_url }}" class="card-img-top" alt="Project Image" style="max-height: 200px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ project.name }}</h5>
+                            <div class="d-flex justify-content-between">
+                                <a href="{{ project.github_url }}" class="btn btn-outline-dark" target="_blank">GitHub</a>
+                                <button class="btn btn-outline-primary" data-toggle="modal" data-target="#projectModal{{ project.id }}">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="projectModal{{ project.id }}" tabindex="-1" aria-labelledby="projectModalLabel{{ project.id }}" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="projectModalLabel{{ project.id }}">{{ project.name }}</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>{{ project.description }}</p>
+                                <a href="{{ project.live_url }}" class="btn btn-outline-success" target="_blank">Live</a>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    function showProjects(type) {
+        const minorProjects = document.querySelectorAll('.minor-project');
+        const majorProjects = document.querySelectorAll('.major-project');
+
+        if (type === 'minor') {
+            minorProjects.forEach(project => project.style.display = 'block');
+            majorProjects.forEach(project => project.style.display = 'none');
+        } else if (type === 'major') {
+            minorProjects.forEach(project => project.style.display = 'none');
+            majorProjects.forEach(project => project.style.display = 'block');
+        } else {
+            minorProjects.forEach(project => project.style.display = 'block');
+            majorProjects.forEach(project => project.style.display = 'block');
+        }
+    }
+
+    // Show all projects by default
+    document.addEventListener("DOMContentLoaded", function() {
+        showProjects('all');
+    });
+</script>
+
+{% endblock content %}

@@ -1,0 +1,177 @@
+<!-- portfolio/templates/about.html -->
+{% extends 'base.html' %}
+
+{% block title %}About{% endblock %}
+
+{% block content %}
+{% load static %}
+<body class="custom-background">
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 mb-4" id="image">
+            <div class="profile-image card mb-3">
+                <img src="{% static 'images/aman1.png' %}" class="img-fluid rounded-start" alt="Profile Picture">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h1>About Me</h1>
+            <div class="about text card border-success mb-3 text-success">
+                <h3>I am Aman Dixit and I am a <span id="nameadd">Python Django Developer</span></h3>
+                <p>
+                    I am currently pursuing my B-Tech (Computer Science and Engineering) at IES College Of Technology, Ratibad Bhopal. My hobbies include listening to music and playing chess. My current chess rating is 1200 ELO points in Chess.com .
+                </p>
+                <p>
+                    I have a keen interest in freelancing and have successfully completed several projects for clients around the globe. I enjoy the flexibility and challenges that come with freelance work, allowing me to continually expand my skills and learn new technologies.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <h1>Skills</h1>
+    <div class="skills mt-4">
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <div class="skill-item">
+                    <h5 class='bx bxl-javascript' style='color:#b0bc1e'>JS</h5>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 86%; background-color: #b0bc1e;" aria-valuenow="86" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <div class="skill-percent">86%</div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="skill-item">
+                    <h5 class='bx bxl-css3' style='color:#147bbc'>CSS</h5>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 76%; background-color: #147bbc;" aria-valuenow="76" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <div class="skill-percent">76%</div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="skill-item">
+                    <h5 class='bx bxl-html5' style='color:#c95d2e'>HTML</h5>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <div class="skill-percent">90%</div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="skill-item">
+                    <h5 class='bx bxl-java' style='color:#737899'>JavaSE</h5>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 70%; background-color: #737899;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <div class="skill-percent">70%</div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="skill-item">
+                    <h5 class='fa-solid fa-database' style='color:#DC7939'>SQL</h5>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 80%; background-color: #DC7939;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <div class="skill-percent">80%</div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="skill-item">
+                    <h5 class='bx bx-copyright' style='color:#6295cb'>C</h5>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 95%; background-color: #6295cb;" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <div class="skill-percent">95%</div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="skill-item">
+                    <h5 class='bx bxs-customize' style='color:#bc1476'>DSA</h5>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 70%; background-color: #bc1476;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <div class="skill-percent">70%</div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="skill-item">
+                    <h5 class='bx bxs-customize' style='color:#bc1476'>Python</h5>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 85%; background-color: #bc1476;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <div class="skill-percent">85%</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .btn:hover{
+        box-shadow: 0 0 5px #dc3545, 
+                    0 0 25px #dc3545,0 0 50px #dc3545,
+                    0 0 100px #dc3545,0 0 200px #dc3545;
+      }
+        .custom-background {
+            background-color: #031633; /* Adjust the color as needed */
+            padding: 20px; /* Adjust padding as needed */
+            color: white; /* Set text color to contrast with background */
+        }
+    
+        .custom-background .card-body {
+            background-color: rgba(255, 255, 255, 0.1); /* Optional: add a semi-transparent white background to the card body */
+            padding: 15px; /* Optional: adjust padding for card body */
+        }
+    
+        .custom-background .card-body p {
+            color: white; /* Set text color inside card body */
+        }
+    
+
+
+
+    .v-shape {
+        position: relative;
+        overflow: hidden;
+        height: 300px; /* Adjust height as needed */
+    }
+
+    .v-shape img {
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        transform: translateY(50%);
+    }
+
+    .v-shape::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #f8f9fa; /* Background color for the V shape */
+        clip-path: polygon(0 0, 100% 0, 100% 50%, 0 100%);
+    }
+
+    .skill-item {
+        text-align: center;
+    }
+
+    .progress {
+        height: 20px;
+        margin-bottom: 10px;
+    }
+
+    .progress-bar {
+        border-radius: 5px;
+    }
+
+    .skill-percent {
+        font-size: 14px;
+        color: #6c757d;
+    }
+</style>
+
+{% endblock %}
+</body>

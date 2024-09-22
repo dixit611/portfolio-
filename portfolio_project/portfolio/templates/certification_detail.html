@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}Certification Detail{% endblock %}
+
+{% block content %}
+{% load static %}
+
+<div class="container mt-4">
+    <h1>Certification {{ id }}</h1>
+    <div class="row my-4">
+        <div class="col-md-6">
+            <img src="{% static 'images/certificate/' %}{{ certification }}" class="img-fluid mb-3 rounded shadow" alt="Certification Image">
+        </div>
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h5 class="card-title">Certification Details</h5>
+                    <p class="card-text">Details about Certification {{ id }} go here. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#certificateModal" onclick="updateCertificatePDF({{ id }})">
+                        View Certificate
+                    </button>
+                </div>
+            </div>
+            <a href="{% url 'certifications' %}" class="btn btn-secondary mt-3">Back to Certifications</a>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="certificateModal" tabindex="-1" aria-labelledby="certificateModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="certificateModalLabel">Certification {{ id }} PDF</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <iframe id="certificatePDF" src="{% static 'pdf/certificate/' %}{{ pdf_path }}" class="w-100" style="height:500px;" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function updateCertificatePDF(certificateId) {
+        var pdfPath = "{% static 'pdf/certificate/' %}" + certificateId + ".pdf";
+        document.getElementById("certificatePDF").src = pdfPath;
+    }
+</script>
+{% endblock %}
