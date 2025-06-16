@@ -1,0 +1,7 @@
+# render.yaml
+services:
+  - type: web
+    name: student-crud-app
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn crud_project.wsgi:application
